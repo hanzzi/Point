@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="Point.Views.ItemDetailPage"
+             Title="{Binding Title}">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Cancel" Clicked="Cancel_Clicked"/>
+        <ToolbarItem Text="Save" Clicked="Save_Clicked"/>
+    </ContentPage.ToolbarItems>
+    <StackLayout Spacing="20" Padding="15">
+        <Picker x:Name="EntryCategory" Title="Category" >
+            <Picker.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                    <x:String>Café</x:String>
+                    <x:String>Restaurant</x:String>
+                    <x:String>POI</x:String>
+                    <x:String>Museum</x:String>
+                    <x:String>Shop</x:String>
+
+                </x:Array>
+            </Picker.ItemsSource>
+        </Picker>
+        <Entry Text="{Binding Item.Title}" d:Text="Entry title" Placeholder="Title" x:Name="Title" FontSize="Small"/>
+        <Label Text="Coordinates" FontSize="Medium" Margin="0,-20"/>
+        <Label Text="{Binding Item.Latitude, TargetNullValue='Loading..', StringFormat='{0:N5}° N', FallbackValue='Error Loading Data'}" FontSize="Small" Margin="0"/>
+        <Label Text="{Binding Item.Longitude, TargetNullValue='Loading..', StringFormat='{0:N5}° W', FallbackValue='Error Loading Data'}" FontSize="Small" Margin="0,-20"/>
+    </StackLayout>
+</ContentPage>
